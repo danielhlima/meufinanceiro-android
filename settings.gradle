@@ -1,0 +1,2 @@
+include ':app', ':domain', ':device', ':data'
+rootProject.name='Meu Financeiro'
