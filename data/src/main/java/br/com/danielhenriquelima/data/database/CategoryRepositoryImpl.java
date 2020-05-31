@@ -3,6 +3,8 @@ package br.com.danielhenriquelima.data.database;
 import android.content.Context;
 import android.util.Log;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import br.com.danielhenriquelima.data.executor.AppExecutors;
@@ -37,14 +39,17 @@ public class CategoryRepositoryImpl implements CategoryRepository {
     @Override
     public List<Category> getAllCategories() {
 
-        AppExecutors.getInstance().diskIO().execute(new Runnable() {
-            @Override
-            public void run() {
-                List<CategoryModel> categoryModelList = mDb.categoryDao().getAllCategories();
-                int a = 0;
-            }
-        });
-        return null;
+        List<CategoryModel> categoriesModel = mDb.categoryDao().getAllCategories();
+        List<Category> categories = new ArrayList<Category>();
+        for(CategoryModel catModel : categoriesModel){
+            categories.add(categoryModelToCategory(catModel));
+        }
+        return categories;
+    }
+
+    private Category categoryModelToCategory(CategoryModel categoryModel){
+
+        return new Category(categoryModel.getIdCat(), categoryModel.getName());
     }
 
     @Override
