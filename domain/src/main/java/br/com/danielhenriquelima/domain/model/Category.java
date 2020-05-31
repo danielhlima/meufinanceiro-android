@@ -1,53 +1,40 @@
 package br.com.danielhenriquelima.domain.model;
 
-import br.com.danielhenriquelima.domain.R;
+import java.util.Objects;
 
-public enum Category {
+public class Category {
 
-    SUPERMARKET(R.string.supermarket),
-    FUEL(R.string.fuel),
-    TRANSPORT(R.string.transport),
-    RESTAURANT(R.string.restaurant),
-    STUDY(R.string.study),
-    CLOTHES(R.string.clothes),
-    SHOES(R.string.shoes),
-    PHARMACY(R.string.pharmacy),
-    GIFTS(R.string.gifts),
-    AUTO_MECHANIC(R.string.mechanic),
-    DONATIONS(R.string.donation),
-    PITSTOPS(R.string.pitstop),
-    BAKERY(R.string.bakery),
-    TRANSFERS(R.string.transfers),
-    PARKING(R.string.parking),
-    BOOKS(R.string.books),
-    PETS(R.string.pets),
-    CAR(R.string.car),
-    CONTRUCTION_MATERIALS(R.string.construction),
-    PERFUMARY(R.string.perfumary),
-    BUTCHERY(R.string.butchery),
-    STATIONARY_STORE(R.string.stationary_store),
-    DENTIST(R.string.dentist),
-    DOCTORS(R.string.doctors),
-    ENERGY(R.string.energy),
-    WATER(R.string.water),
-    INTERNET(R.string.internet),
-    TV(R.string.tv),
-    MOBILE(R.string.mobile),
-    FEES(R.string.fees),
-    INVESTMENT(R.string.investment),
-    PREVIDENCY(R.string.previdency),
-    INSURANCE(R.string.insurance),
-    HABITATION(R.string.habitation),
-    ENTERTAINMENT(R.string.entertainment),
-    STORES(R.string.stores);
+    private int id;
+    private String name;
 
-
-    private int descriptionCode;
-    Category(int description){
-        this.descriptionCode = description;
+    public Category(int id, String name) {
+        this.id = id;
+        this.name = name;
     }
 
-    public int getDescription() {
-        return descriptionCode;
+    public Category(String name) {
+        this.name = name;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Category category = (Category) o;
+        return id == category.id &&
+                name.equals(category.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name);
     }
 }

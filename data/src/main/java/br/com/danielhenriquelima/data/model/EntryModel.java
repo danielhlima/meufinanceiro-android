@@ -1,10 +1,13 @@
 package br.com.danielhenriquelima.data.model;
 
+import androidx.room.Embedded;
 import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 import java.util.Date;
+
+import br.com.danielhenriquelima.domain.model.Entry;
 
 @Entity(tableName = "entry")
 public class EntryModel {
@@ -15,27 +18,38 @@ public class EntryModel {
     private float value;
     private Date date;
     private Date dueDate;
-    private String category;
-    private String type;
+    @Embedded(prefix = "entry_")
+    private CategoryModel categoryModel;
+    private boolean isCredit;
 
     @Ignore
-    public EntryModel(String name, float value, Date date, Date dueDate, String category, String type) {
+    public EntryModel(String name, float value, Date date, Date dueDate, CategoryModel categoryModel, boolean isCredit) {
         this.name = name;
         this.value = value;
         this.date = date;
         this.dueDate = dueDate;
-        this.category = category;
-        this.type = type;
+        this.categoryModel = categoryModel;
+        this.isCredit = isCredit;
     }
 
-    public EntryModel(int id, String name, float value, Date date, Date dueDate, String category, String type) {
+    @Ignore
+    public EntryModel(Entry entry){
+        this.name = entry.getName();
+        this.value = entry.getValue();
+        this.date = entry.getDate();
+        this.dueDate = entry.getDueDate();
+        this.isCredit = entry.isCredito();
+        this.categoryModel = new CategoryModel(entry.getCategory().getId(), entry.getCategory().getName());
+    }
+
+    public EntryModel(int id, String name, float value, Date date, Date dueDate, CategoryModel categoryModel, boolean isCredit) {
         this.id = id;
         this.name = name;
         this.value = value;
         this.date = date;
         this.dueDate = dueDate;
-        this.category = category;
-        this.type = type;
+        this.categoryModel = categoryModel;
+        this.isCredit = isCredit;
     }
 
     public int getId() {
@@ -78,19 +92,19 @@ public class EntryModel {
         this.dueDate = dueDate;
     }
 
-    public String getCategory() {
-        return category;
+    public CategoryModel getCategoryModel() {
+        return categoryModel;
     }
 
-    public void setCategory(String category) {
-        this.category = category;
+    public void setCategoryModel(CategoryModel categoryModel) {
+        this.categoryModel = categoryModel;
     }
 
-    public String getType() {
-        return type;
+    public boolean isCredit() {
+        return isCredit;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setCredit(boolean credit) {
+        isCredit = credit;
     }
 }

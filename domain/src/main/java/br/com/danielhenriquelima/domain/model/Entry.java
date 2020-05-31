@@ -11,34 +11,34 @@ public class Entry {
     private Date date;
     private Date dueDate;
     private Category category;
-    private Type type;
+    private boolean isCredito;
 
-    public Entry(String name, float value, Date date, Category category, Type type) {
+    public Entry(String name, float value, Date date, Category category, boolean isCredito) {
         this.name = name;
         this.value = value;
         this.date = date;
         this.category = category;
-        this.type = type;
+        this.isCredito = isCredito;
         this.dueDate = date;
     }
 
-    public Entry(String name, float value, Date date, Date dueDate, Category category, Type type) {
+    public Entry(String name, float value, Date date, Date dueDate, Category category, boolean isCredito) {
         this.name = name;
         this.value = value;
         this.date = date;
         this.dueDate = dueDate;
         this.category = category;
-        this.type = type;
+        this.isCredito = isCredito;
     }
 
-    public Entry(int id, String name, float value, Date date, Date dueDate, Category category, Type type) {
+    public Entry(int id, String name, float value, Date date, Date dueDate, Category category, boolean isCredito) {
         this.id = id;
         this.name = name;
         this.value = value;
         this.date = date;
         this.dueDate = dueDate;
         this.category = category;
-        this.type = type;
+        this.isCredito = isCredito;
     }
 
     public int getId() {
@@ -61,8 +61,8 @@ public class Entry {
         return category;
     }
 
-    public Type getType() {
-        return type;
+    public boolean isCredito() {
+        return isCredito;
     }
 
     public String getName() {
@@ -74,14 +74,17 @@ public class Entry {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Entry entry = (Entry) o;
-        return Float.compare(entry.value, value) == 0 &&
+        return id == entry.id &&
+                Float.compare(entry.value, value) == 0 &&
+                isCredito == entry.isCredito &&
+                name.equals(entry.name) &&
                 date.equals(entry.date) &&
-                category == entry.category &&
-                type == entry.type;
+                dueDate.equals(entry.dueDate) &&
+                category.equals(entry.category);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(value, date, category, type);
+        return Objects.hash(id, name, value, date, dueDate, category, isCredito);
     }
 }
