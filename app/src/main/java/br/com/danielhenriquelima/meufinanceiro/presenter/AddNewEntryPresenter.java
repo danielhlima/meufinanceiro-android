@@ -5,10 +5,10 @@ import android.util.Log;
 
 import br.com.danielhenriquelima.data.database.EntryRepositoryImpl;
 import br.com.danielhenriquelima.domain.interactor.AddNewEntryUseCase;
-import br.com.danielhenriquelima.domain.interactor.UseCase;
+import br.com.danielhenriquelima.domain.interactor.UseCaseIn;
 import br.com.danielhenriquelima.domain.model.Entry;
 
-public class AddNewEntryPresenter implements UseCase.Callback {
+public class AddNewEntryPresenter implements UseCaseIn.Callback {
 
     private AddNewEntryUseCase addNewEntryUseCase;
     private EntryRepositoryImpl entryRepository;

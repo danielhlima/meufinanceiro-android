@@ -18,17 +18,18 @@ public class EntryModel {
     private float value;
     private Date date;
     private Date dueDate;
-    @Embedded(prefix = "entry_")
-    private CategoryModel categoryModel;
+    private int categoryModelId;
     private boolean isCredit;
 
+    public EntryModel(){}
+
     @Ignore
-    public EntryModel(String name, float value, Date date, Date dueDate, CategoryModel categoryModel, boolean isCredit) {
+    public EntryModel(String name, float value, Date date, Date dueDate, int categoryModelId, boolean isCredit) {
         this.name = name;
         this.value = value;
         this.date = date;
         this.dueDate = dueDate;
-        this.categoryModel = categoryModel;
+        this.categoryModelId = categoryModelId;
         this.isCredit = isCredit;
     }
 
@@ -39,16 +40,17 @@ public class EntryModel {
         this.date = entry.getDate();
         this.dueDate = entry.getDueDate();
         this.isCredit = entry.isCredito();
-        this.categoryModel = new CategoryModel(entry.getCategory().getId(), entry.getCategory().getName());
+        this.categoryModelId = entry.getCategoryId();
     }
 
-    public EntryModel(int id, String name, float value, Date date, Date dueDate, CategoryModel categoryModel, boolean isCredit) {
+    @Ignore
+    public EntryModel(int id, String name, float value, Date date, Date dueDate, int categoryModelId, boolean isCredit) {
         this.id = id;
         this.name = name;
         this.value = value;
         this.date = date;
         this.dueDate = dueDate;
-        this.categoryModel = categoryModel;
+        this.categoryModelId = categoryModelId;
         this.isCredit = isCredit;
     }
 
@@ -92,12 +94,12 @@ public class EntryModel {
         this.dueDate = dueDate;
     }
 
-    public CategoryModel getCategoryModel() {
-        return categoryModel;
+    public int getCategoryModelId() {
+        return categoryModelId;
     }
 
-    public void setCategoryModel(CategoryModel categoryModel) {
-        this.categoryModel = categoryModel;
+    public void setCategoryModelId(int categoryModelId) {
+        this.categoryModelId = categoryModelId;
     }
 
     public boolean isCredit() {

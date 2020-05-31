@@ -8,9 +8,10 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.room.TypeConverters;
 
+import br.com.danielhenriquelima.data.model.CategoryModel;
 import br.com.danielhenriquelima.data.model.EntryModel;
 
-@Database(entities = {EntryModel.class}, version = 1, exportSchema = false)
+@Database(entities = {EntryModel.class, CategoryModel.class}, version = 1, exportSchema = false)
 @TypeConverters(DateConverter.class)
 public abstract class AppDatabase extends RoomDatabase {
 
@@ -33,4 +34,5 @@ public abstract class AppDatabase extends RoomDatabase {
     }
 
     public abstract EntryDao entryDao();
+    public abstract CategoryDao categoryDao();
 }

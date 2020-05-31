@@ -1,10 +1,12 @@
 package br.com.danielhenriquelima.domain.interactor;
 
+import android.util.Log;
+
 import br.com.danielhenriquelima.domain.exception.AddNewEntryException;
 import br.com.danielhenriquelima.domain.model.Entry;
 import br.com.danielhenriquelima.repository.EntryRepository;
 
-public final class AddNewEntryUseCase implements UseCase<Entry> {
+public final class AddNewEntryUseCase implements UseCaseIn<Entry> {
 
     private EntryRepository entryRepository;
 
@@ -13,9 +15,15 @@ public final class AddNewEntryUseCase implements UseCase<Entry> {
     }
 
     @Override
-    public void execute(final Entry enty, Callback callback){
+    public void execute(Entry entry, Callback callback){
 
-        if(entryRepository.createNewEntry(enty) != -1)
+        try{
+            entryRepository.createNewEntry(entry);
+        }catch (AddNewEntryException e){
+            Log.d("DABUEK", e.getLocalizedMessage());
+        }
+
+        if(entry != null)
             callback.onSuccess();
         else
             callback.onError(new AddNewEntryException("Error while inserting new Entry on database"));

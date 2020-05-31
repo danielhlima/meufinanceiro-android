@@ -15,6 +15,7 @@ public class CategoryModel {
 
     public CategoryModel(){}
 
+    @Ignore
     public CategoryModel(int id, String name) {
         this.idCat = id;
         this.name = name;
