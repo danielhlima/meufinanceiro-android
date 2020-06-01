@@ -7,7 +7,6 @@ import java.util.List;
 import br.com.danielhenriquelima.data.executor.AppExecutors;
 import br.com.danielhenriquelima.data.model.EntryModel;
 import br.com.danielhenriquelima.domain.exception.AddNewEntryException;
-import br.com.danielhenriquelima.domain.model.Category;
 import br.com.danielhenriquelima.domain.model.Entry;
 import br.com.danielhenriquelima.repository.EntryRepository;
 

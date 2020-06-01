@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         addNewCategoryUsePresenter = new AddNewCategoryPresenter(getApplicationContext());
-        addNewCategoryUsePresenter.addNewCategory(new Category("Mecânico"));
+        addNewCategoryUsePresenter.addNewCategory(new Category("Padaria"));
 
         getAllCategoriesPresenter = new GetAllCategoriesPresenter(getApplicationContext());
         getAllCategoriesPresenter.getAllCategories();

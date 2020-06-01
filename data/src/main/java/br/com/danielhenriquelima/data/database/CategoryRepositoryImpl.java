@@ -1,10 +1,11 @@
 package br.com.danielhenriquelima.data.database;
 
 import android.content.Context;
-import android.util.Log;
+
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.Observer;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import br.com.danielhenriquelima.data.executor.AppExecutors;
@@ -21,9 +22,25 @@ public class CategoryRepositoryImpl implements CategoryRepository {
         mDb = AppDatabase.getInstance(context);
     }
 
+    //TODO: fazer isso voltar um LiveData de Category
+    @Override
+    public List<Category> getAllCategories() {
+        List<CategoryModel> categoriModels = mDb.categoryDao().getAllCategories();
+        return categoryModelListToCategoryList(categoriModels);
+    }
+
+    @Override
+    public Category updateCategory(Category category) {
+        return null;
+    }
+
+    @Override
+    public boolean deleteCategory(Category category) {
+        return false;
+    }
+
     @Override
     public void createCategory(final Category tCategory) throws AddNewCategoryException{
-
         try{
             AppExecutors.getInstance().diskIO().execute(new Runnable() {
                 @Override
@@ -36,29 +53,14 @@ public class CategoryRepositoryImpl implements CategoryRepository {
         }
     }
 
-    @Override
-    public List<Category> getAllCategories() {
-
-        List<CategoryModel> categoriesModel = mDb.categoryDao().getAllCategories();
+    private List<Category> categoryModelListToCategoryList(List<CategoryModel> categoryModels){
         List<Category> categories = new ArrayList<Category>();
-        for(CategoryModel catModel : categoriesModel){
-            categories.add(categoryModelToCategory(catModel));
+        if(categoryModels != null){
+            for(CategoryModel categoryModel : categoryModels) {
+                categories.add(new Category(categoryModel.getIdCat(), categoryModel.getName()));
+            }
+            return categories;
         }
-        return categories;
-    }
-
-    private Category categoryModelToCategory(CategoryModel categoryModel){
-
-        return new Category(categoryModel.getIdCat(), categoryModel.getName());
-    }
-
-    @Override
-    public Category updateCategory(Category category) {
         return null;
-    }
-
-    @Override
-    public boolean deleteCategory(Category category) {
-        return false;
     }
 }
