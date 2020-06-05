@@ -1,10 +1,10 @@
-package br.com.danielhenriquelima.data.database;
+package br.com.danielhenriquelima.data.database.entry;
 
 import android.content.Context;
 
 import java.util.List;
 
-import br.com.danielhenriquelima.data.executor.AppExecutors;
+import br.com.danielhenriquelima.data.database.AppDatabase;
 import br.com.danielhenriquelima.data.model.EntryModel;
 import br.com.danielhenriquelima.domain.exception.AddNewEntryException;
 import br.com.danielhenriquelima.domain.model.Entry;
@@ -21,16 +21,6 @@ public class EntryRepositoryImpl implements EntryRepository {
 
     @Override
     public void createNewEntry(final Entry tEntry) throws AddNewEntryException {
-        try{
-            AppExecutors.getInstance().diskIO().execute(new Runnable() {
-                @Override
-                public void run() {
-                    mDb.entryDao().insertEntry(new EntryModel(tEntry));
-                }
-            });
-        }catch (Exception e){
-            throw new AddNewEntryException(e.getMessage());
-        }
     }
 
     @Override

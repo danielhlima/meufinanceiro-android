@@ -1,14 +1,11 @@
-package br.com.danielhenriquelima.data.database;
+package br.com.danielhenriquelima.data.database.category;
 
 import android.content.Context;
-
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.Observer;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.danielhenriquelima.data.executor.AppExecutors;
+import br.com.danielhenriquelima.data.database.AppDatabase;
 import br.com.danielhenriquelima.data.model.CategoryModel;
 import br.com.danielhenriquelima.domain.exception.AddNewCategoryException;
 import br.com.danielhenriquelima.domain.model.Category;
@@ -22,7 +19,7 @@ public class CategoryRepositoryImpl implements CategoryRepository {
         mDb = AppDatabase.getInstance(context);
     }
 
-    //TODO: fazer isso voltar um LiveData de Category
+
     @Override
     public List<Category> getAllCategories() {
         List<CategoryModel> categoriModels = mDb.categoryDao().getAllCategories();
@@ -42,12 +39,7 @@ public class CategoryRepositoryImpl implements CategoryRepository {
     @Override
     public void createCategory(final Category tCategory) throws AddNewCategoryException{
         try{
-            AppExecutors.getInstance().diskIO().execute(new Runnable() {
-                @Override
-                public void run() {
-                    mDb.categoryDao().insertCategory(new CategoryModel(tCategory));
-                }
-            });
+            mDb.categoryDao().insertCategory(new CategoryModel(tCategory));
         }catch (Exception e){
             throw new AddNewCategoryException(e.getMessage());
         }

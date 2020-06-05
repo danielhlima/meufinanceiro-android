@@ -8,7 +8,6 @@ import br.com.danielhenriquelima.domain.model.Category;
 public interface CategoryRepository {
 
     void createCategory(Category category) throws AddNewCategoryException;
-    //TODO: LiveData?
     List<Category> getAllCategories();
     Category updateCategory(Category category);
     boolean deleteCategory(Category category);

@@ -8,6 +8,8 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.room.TypeConverters;
 
+import br.com.danielhenriquelima.data.database.category.CategoryDao;
+import br.com.danielhenriquelima.data.database.entry.EntryDao;
 import br.com.danielhenriquelima.data.model.CategoryModel;
 import br.com.danielhenriquelima.data.model.EntryModel;
 

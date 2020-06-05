@@ -1,4 +1,4 @@
-package br.com.danielhenriquelima.data.database;
+package br.com.danielhenriquelima.data.database.category;
 
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
@@ -15,7 +15,6 @@ public interface CategoryDao {
     @Insert
     void insertCategory(CategoryModel entryModel);
 
-    //TODO: LiveData?
     @Query("SELECT * FROM category")
     List<CategoryModel> getAllCategories();
 }

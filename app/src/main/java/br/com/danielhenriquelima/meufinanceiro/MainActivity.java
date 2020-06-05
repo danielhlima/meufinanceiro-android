@@ -1,22 +1,29 @@
 package br.com.danielhenriquelima.meufinanceiro;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
-import android.app.Application;
+
 import android.os.Bundle;
+import android.util.Log;
 
-import java.util.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 import br.com.danielhenriquelima.domain.model.Category;
-import br.com.danielhenriquelima.meufinanceiro.presenter.AddNewCategoryPresenter;
-import br.com.danielhenriquelima.meufinanceiro.presenter.AddNewEntryPresenter;
-import br.com.danielhenriquelima.meufinanceiro.presenter.GetAllCategoriesPresenter;
+import br.com.danielhenriquelima.meufinanceiro.presenter.category.usecases.AddNewCategoryPresenter;
+import br.com.danielhenriquelima.meufinanceiro.presenter.entry.AddNewEntryPresenter;
+import br.com.danielhenriquelima.meufinanceiro.presenter.category.usecases.GetAllCategoriesPresenter;
+import br.com.danielhenriquelima.meufinanceiro.presenter.viewmodel.CategoryViewModel;
+
 
 public class MainActivity extends AppCompatActivity {
 
     private AddNewEntryPresenter addNewEntryPresenter;
     private AddNewCategoryPresenter addNewCategoryUsePresenter;
     private GetAllCategoriesPresenter getAllCategoriesPresenter;
+    private List<Category>categoriesList = new ArrayList<Category>();
 
 
     @Override
@@ -24,16 +31,39 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        addNewCategoryUsePresenter = new AddNewCategoryPresenter(getApplicationContext());
-        addNewCategoryUsePresenter.addNewCategory(new Category("Padaria"));
+        //TODO: Use Tata's recomendation
+        AppExecutors.getInstance().diskIO().execute(new Runnable() {
+            @Override
+            public void run() {
+                addNewCategoryUsePresenter = new AddNewCategoryPresenter(getApplicationContext());
+                addNewCategoryUsePresenter.addNewCategory(new Category("Mecânico"));
+            }
+        });
 
-        getAllCategoriesPresenter = new GetAllCategoriesPresenter(getApplicationContext());
-        getAllCategoriesPresenter.getAllCategories();
+        addNewEntryPresenter = new AddNewEntryPresenter(getApplicationContext());
+        setupViewModel();
+    }
 
-//        addNewEntryPresenter = new AddNewEntryPresenter(getApplicationContext());
-//        Entry entry = new Entry("Nome Entry", 10.0f, new Date(), new Category("
-//        Comida"), false);
-//        addNewEntryPresenter.addNewEntry(entry);
+    private void setupViewModel(){
+        final CategoryViewModel categoryViewModel = ViewModelProvider.AndroidViewModelFactory.
+                getInstance(getApplication()).create(CategoryViewModel.class);
 
+        getAllCategoriesPresenter = new GetAllCategoriesPresenter(getApplicationContext(), categoryViewModel);
+
+        //TODO: Use Tata's recomendation
+        AppExecutors.getInstance().diskIO().execute(new Runnable() {
+            @Override
+            public void run() {
+                getAllCategoriesPresenter.getAllCategories();
+            }
+        });
+
+        //TODO: categories ready to use
+        categoryViewModel.getCategories().observe(this, new Observer<List<Category>>() {
+            @Override
+            public void onChanged(List<Category> categories) {
+                categoriesList = categories;
+            }
+        });
     }
 }

@@ -1,4 +1,4 @@
-package br.com.danielhenriquelima.data.database;
+package br.com.danielhenriquelima.data.database.entry;
 
 import androidx.room.Dao;
 import androidx.room.Insert;

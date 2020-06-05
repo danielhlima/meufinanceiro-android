@@ -1,9 +1,9 @@
-package br.com.danielhenriquelima.meufinanceiro.presenter;
+package br.com.danielhenriquelima.meufinanceiro.presenter.entry;
 
 import android.content.Context;
 import android.util.Log;
 
-import br.com.danielhenriquelima.data.database.EntryRepositoryImpl;
+import br.com.danielhenriquelima.data.database.entry.EntryRepositoryImpl;
 import br.com.danielhenriquelima.domain.interactor.AddNewEntryUseCase;
 import br.com.danielhenriquelima.domain.interactor.UseCaseIn;
 import br.com.danielhenriquelima.domain.model.Entry;

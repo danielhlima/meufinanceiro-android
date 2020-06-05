@@ -1,9 +1,9 @@
-package br.com.danielhenriquelima.meufinanceiro.presenter;
+package br.com.danielhenriquelima.meufinanceiro.presenter.category.usecases;
 
 import android.content.Context;
 import android.util.Log;
 
-import br.com.danielhenriquelima.data.database.CategoryRepositoryImpl;
+import br.com.danielhenriquelima.data.database.category.CategoryRepositoryImpl;
 import br.com.danielhenriquelima.domain.interactor.AddNewCategoryUseCase;
 import br.com.danielhenriquelima.domain.interactor.UseCaseIn;
 import br.com.danielhenriquelima.domain.model.Category;
