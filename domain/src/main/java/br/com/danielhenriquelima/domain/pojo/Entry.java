@@ -1,7 +1,6 @@
-package br.com.danielhenriquelima.domain.model;
+package br.com.danielhenriquelima.domain.pojo;
 
 import java.util.Date;
-import java.util.Objects;
 
 public class Entry {
 

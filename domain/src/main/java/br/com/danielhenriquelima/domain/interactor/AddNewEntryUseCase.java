@@ -3,7 +3,7 @@ package br.com.danielhenriquelima.domain.interactor;
 import android.util.Log;
 
 import br.com.danielhenriquelima.domain.exception.AddNewEntryException;
-import br.com.danielhenriquelima.domain.model.Entry;
+import br.com.danielhenriquelima.domain.pojo.Entry;
 import br.com.danielhenriquelima.repository.EntryRepository;
 
 public final class AddNewEntryUseCase implements UseCaseIn<Entry> {

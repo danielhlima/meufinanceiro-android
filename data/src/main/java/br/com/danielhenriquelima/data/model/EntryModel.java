@@ -1,13 +1,12 @@
 package br.com.danielhenriquelima.data.model;
 
-import androidx.room.Embedded;
 import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 import java.util.Date;
 
-import br.com.danielhenriquelima.domain.model.Entry;
+import br.com.danielhenriquelima.domain.pojo.Entry;
 
 @Entity(tableName = "entry")
 public class EntryModel {

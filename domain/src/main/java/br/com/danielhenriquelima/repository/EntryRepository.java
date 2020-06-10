@@ -3,7 +3,7 @@ package br.com.danielhenriquelima.repository;
 import java.util.List;
 
 import br.com.danielhenriquelima.domain.exception.AddNewEntryException;
-import br.com.danielhenriquelima.domain.model.Entry;
+import br.com.danielhenriquelima.domain.pojo.Entry;
 
 public interface EntryRepository {
 

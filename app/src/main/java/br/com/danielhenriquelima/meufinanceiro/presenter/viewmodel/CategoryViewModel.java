@@ -7,7 +7,7 @@ import androidx.lifecycle.MutableLiveData;
 
 import java.util.List;
 
-import br.com.danielhenriquelima.domain.model.Category;
+import br.com.danielhenriquelima.domain.pojo.Category;
 import br.com.danielhenriquelima.meufinanceiro.presenter.view.CategoryView;
 
 public class CategoryViewModel extends AndroidViewModel implements CategoryView {

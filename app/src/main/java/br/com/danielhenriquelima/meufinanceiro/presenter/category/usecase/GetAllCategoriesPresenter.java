@@ -1,4 +1,4 @@
-package br.com.danielhenriquelima.meufinanceiro.presenter.category.usecases;
+package br.com.danielhenriquelima.meufinanceiro.presenter.category.usecase;
 
 import android.content.Context;
 
@@ -7,7 +7,7 @@ import java.util.List;
 import br.com.danielhenriquelima.data.database.category.CategoryRepositoryImpl;
 import br.com.danielhenriquelima.domain.interactor.GetAllCategoriesUseCase;
 import br.com.danielhenriquelima.domain.interactor.UseCaseOut;
-import br.com.danielhenriquelima.domain.model.Category;
+import br.com.danielhenriquelima.domain.pojo.Category;
 import br.com.danielhenriquelima.meufinanceiro.presenter.view.CategoryView;
 
 public class GetAllCategoriesPresenter implements UseCaseOut.Callback<List<Category>> {

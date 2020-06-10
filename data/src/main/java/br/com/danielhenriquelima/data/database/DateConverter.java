@@ -5,8 +5,6 @@ import androidx.room.TypeConverter;
 
 import java.util.Date;
 
-import br.com.danielhenriquelima.domain.model.Category;
-
 public class DateConverter {
 
     @TypeConverter

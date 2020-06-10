@@ -1,6 +1,4 @@
-package br.com.danielhenriquelima.domain.model;
-
-import java.util.Objects;
+package br.com.danielhenriquelima.domain.pojo;
 
 public class Category {
 

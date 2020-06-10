@@ -1,4 +1,4 @@
-package br.com.danielhenriquelima.meufinanceiro.presenter.category.usecases;
+package br.com.danielhenriquelima.meufinanceiro.presenter.category.usecase;
 
 import android.content.Context;
 import android.util.Log;
@@ -6,7 +6,7 @@ import android.util.Log;
 import br.com.danielhenriquelima.data.database.category.CategoryRepositoryImpl;
 import br.com.danielhenriquelima.domain.interactor.AddNewCategoryUseCase;
 import br.com.danielhenriquelima.domain.interactor.UseCaseIn;
-import br.com.danielhenriquelima.domain.model.Category;
+import br.com.danielhenriquelima.domain.pojo.Category;
 
 public class AddNewCategoryPresenter implements UseCaseIn.Callback {
 

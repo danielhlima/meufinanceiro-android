@@ -4,7 +4,7 @@ import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
-import br.com.danielhenriquelima.domain.model.Category;
+import br.com.danielhenriquelima.domain.pojo.Category;
 
 @Entity(tableName = "category")
 public class CategoryModel {

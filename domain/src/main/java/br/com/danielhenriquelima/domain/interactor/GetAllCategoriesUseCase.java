@@ -3,7 +3,7 @@ package br.com.danielhenriquelima.domain.interactor;
 import java.util.List;
 
 import br.com.danielhenriquelima.domain.exception.GetAllCategoriesException;
-import br.com.danielhenriquelima.domain.model.Category;
+import br.com.danielhenriquelima.domain.pojo.Category;
 import br.com.danielhenriquelima.repository.CategoryRepository;
 
 public class GetAllCategoriesUseCase implements UseCaseOut {
