@@ -1,10 +1,9 @@
 package br.com.danielhenriquelima.meufinanceiro;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.databinding.DataBindingUtil;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
 
 
 import android.os.Bundle;
@@ -16,16 +15,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.danielhenriquelima.domain.pojo.Category;
-import br.com.danielhenriquelima.meufinanceiro.databinding.ActivityMainBinding;
-import br.com.danielhenriquelima.meufinanceiro.presenter.category.usecase.AddNewCategoryPresenter;
-import br.com.danielhenriquelima.meufinanceiro.presenter.entry.usecase.AddNewEntryPresenter;
-import br.com.danielhenriquelima.meufinanceiro.presenter.category.usecase.GetAllCategoriesPresenter;
-import br.com.danielhenriquelima.meufinanceiro.presenter.viewmodel.CategoryViewModel;
+import br.com.danielhenriquelima.meufinanceiro.presenter.ui.HomeFragment;
+import br.com.danielhenriquelima.meufinanceiro.presenter.usecaseimpl.category.AddNewCategoryPresenter;
+import br.com.danielhenriquelima.meufinanceiro.presenter.usecaseimpl.entry.AddNewEntryPresenter;
+import br.com.danielhenriquelima.meufinanceiro.presenter.usecaseimpl.category.GetAllCategoriesPresenter;
 
 
 public class MainActivity extends AppCompatActivity {
 
-    private ActivityMainBinding mBinding;
 
     private AddNewEntryPresenter addNewEntryPresenter;
     private AddNewCategoryPresenter addNewCategoryUsePresenter;
@@ -36,7 +33,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+        setContentView(R.layout.activity_main);
+//        Navigation.findNavController(this, R.id.nav_host).navigate(R.id.dest_home_fragment);
+
+
+
+
 //        setSupportActionBar(mBinding.toolbar);
 
 //        //TODO: Use Tata's recomendation
@@ -49,7 +51,6 @@ public class MainActivity extends AppCompatActivity {
 //        });
 
 //        addNewEntryPresenter = new AddNewEntryPresenter(getApplicationContext());
-        setupViewModel();
     }
 
     private void setupViewModel(){

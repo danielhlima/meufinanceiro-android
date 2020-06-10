@@ -1,4 +1,4 @@
-package br.com.danielhenriquelima.meufinanceiro.presenter.entry.usecase;
+package br.com.danielhenriquelima.meufinanceiro.presenter.usecaseimpl.entry;
 
 import android.content.Context;
 import android.util.Log;
