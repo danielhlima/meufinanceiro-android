@@ -19,13 +19,9 @@ public class AddNewCategoryUseCase implements UseCaseIn<Category> {
 
         try {
             categoryRepository.createCategory(category);
-        }catch (AddNewCategoryException e){
-            Log.d("DABUEK", e.getLocalizedMessage());
-        }
-
-        if(category != null){
             callback.onSuccess();
-        }else
-            callback.onError(new AddNewCategoryException("Error while inserting new Category on database"));
+        }catch (AddNewCategoryException e){
+            callback.onError(new AddNewCategoryException(e.getMessage()));
+        }
     }
 }
