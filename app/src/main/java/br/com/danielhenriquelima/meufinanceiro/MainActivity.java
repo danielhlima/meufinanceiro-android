@@ -8,9 +8,11 @@ import androidx.navigation.fragment.NavHostFragment;
 
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -84,16 +86,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_add_new_category:
-//                Navigation.findNavController(this, R.id.nav_host).navigate(R.id.dest_new_category);
-
-//                NavDirections action = HomeFragmentDirections.actionDestNewCategory();
-//                Navigation.findNavController(this, R.id.nav_host).navigate(action);
-
-                HomeFragmentDirections.ActionDestNewCategory action = HomeFragmentDirections.actionDestNewCategory();
-                action.setParam1("Nova");
-                action.setParam2("Categoria");
-                Navigation.findNavController(this, R.id.nav_host).navigate(action);
-
+                Navigation.findNavController(this, R.id.nav_host).navigate(HomeFragmentDirections.actionDestNewCategory());
                 return true;
 
             case R.id.action_add_new_entry:

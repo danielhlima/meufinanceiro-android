@@ -1,16 +1,20 @@
 package br.com.danielhenriquelima.data.model;
 
+import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.Ignore;
+import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
 import br.com.danielhenriquelima.domain.pojo.Category;
 
-@Entity(tableName = "category")
+@Entity(tableName = "category", indices = {@Index(value = {"name"}, unique = true)})
 public class CategoryModel {
 
     @PrimaryKey(autoGenerate = true)
     private int idCat;
+
+    @ColumnInfo(name = "name")
     private String name;
 
     public CategoryModel(){}
