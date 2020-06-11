@@ -32,9 +32,8 @@ public class NewCategoryFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        ViewDataBinding binding = DataBindingUtil.inflate(inflater, R.layout.fragment_new_category, container, false);
 
-        return binding.getRoot();//inflater.inflate(R.layout.fragment_new_category, container, false);
+        return inflater.inflate(R.layout.fragment_new_category, container, false);
     }
 
     @Override
