@@ -2,6 +2,7 @@ package br.com.danielhenriquelima.meufinanceiro;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
+import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
 
@@ -16,6 +17,8 @@ import java.util.List;
 
 import br.com.danielhenriquelima.domain.pojo.Category;
 import br.com.danielhenriquelima.meufinanceiro.presenter.ui.HomeFragment;
+import br.com.danielhenriquelima.meufinanceiro.presenter.ui.HomeFragmentDirections;
+import br.com.danielhenriquelima.meufinanceiro.presenter.ui.NewCategoryFragmentDirections;
 import br.com.danielhenriquelima.meufinanceiro.presenter.usecaseimpl.category.AddNewCategoryPresenter;
 import br.com.danielhenriquelima.meufinanceiro.presenter.usecaseimpl.entry.AddNewEntryPresenter;
 import br.com.danielhenriquelima.meufinanceiro.presenter.usecaseimpl.category.GetAllCategoriesPresenter;
@@ -34,12 +37,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-//        Navigation.findNavController(this, R.id.nav_host).navigate(R.id.dest_home_fragment);
-
-
-
-
-//        setSupportActionBar(mBinding.toolbar);
 
 //        //TODO: Use Tata's recomendation
 //        AppExecutors.getInstance().diskIO().execute(new Runnable() {
@@ -87,7 +84,16 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_add_new_category:
-                // User chose the "Settings" item, show the app settings UI...
+//                Navigation.findNavController(this, R.id.nav_host).navigate(R.id.dest_new_category);
+
+//                NavDirections action = HomeFragmentDirections.actionDestNewCategory();
+//                Navigation.findNavController(this, R.id.nav_host).navigate(action);
+
+                HomeFragmentDirections.ActionDestNewCategory action = HomeFragmentDirections.actionDestNewCategory();
+                action.setParam1("Nova");
+                action.setParam2("Categoria");
+                Navigation.findNavController(this, R.id.nav_host).navigate(action);
+
                 return true;
 
             case R.id.action_add_new_entry:
