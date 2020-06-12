@@ -39,17 +39,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-//        //TODO: Use Tata's recomendation
-//        AppExecutors.getInstance().diskIO().execute(new Runnable() {
-//            @Override
-//            public void run() {
-//                addNewCategoryUsePresenter = new AddNewCategoryPresenter(getApplicationContext());
-//                addNewCategoryUsePresenter.addNewCategory(new Category("Mecânico"));
-//            }
-//        });
-
-//        addNewEntryPresenter = new AddNewEntryPresenter(getApplicationContext());
     }
 
     private void setupViewModel(){
@@ -90,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
                 return true;
 
             case R.id.action_add_new_entry:
-                // User chose the "Settings" item, show the app settings UI...
+                Navigation.findNavController(this, R.id.nav_host).navigate(HomeFragmentDirections.actionDestCategoryList());
                 return true;
 
             default:

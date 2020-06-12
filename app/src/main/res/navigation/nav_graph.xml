@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_dest_new_category"
             app:destination="@id/dest_new_category" />
+        <action
+            android:id="@+id/action_dest_category_list"
+            app:destination="@id/dest_category_list" />
     </fragment>
 
     <fragment
@@ -20,6 +23,12 @@
         android:name="br.com.danielhenriquelima.meufinanceiro.presenter.ui.NewCategoryFragment"
         android:label="fragment_new_category"
         tools:layout="@layout/fragment_new_category"></fragment>
+
+    <fragment
+        android:id="@+id/dest_category_list"
+        android:name="br.com.danielhenriquelima.meufinanceiro.presenter.ui.CategoryListFragment"
+        android:label="fragment_category_list"
+        tools:layout="@layout/fragment_category_list" />
 
     <action
         android:id="@+id/global_action_dest_home"
@@ -30,9 +39,5 @@
         app:popExitAnim="@anim/nav_default_pop_exit_anim"
         app:popUpTo="@id/dest_home_fragment"
         app:popUpToInclusive="true" />
-    <fragment
-        android:id="@+id/FirstFragment"
-        android:name="br.com.danielhenriquelima.meufinanceiro.presenter.ui.FirstFragment"
-        android:label="@string/first_fragment_label"
-        tools:layout="@layout/fragment_first"/>
+
 </navigation>
