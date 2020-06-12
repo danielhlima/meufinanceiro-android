@@ -8,6 +8,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -15,11 +16,14 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.LinearLayout;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import br.com.danielhenriquelima.domain.pojo.Category;
+import br.com.danielhenriquelima.meufinanceiro.NavGraphDirections;
 import br.com.danielhenriquelima.meufinanceiro.R;
 import br.com.danielhenriquelima.meufinanceiro.executor.AppExecutors;
 import br.com.danielhenriquelima.meufinanceiro.presenter.ui.helper.ClickRecyclerViewHelper;
@@ -34,9 +38,8 @@ public class CategoryListFragment extends Fragment implements ClickRecyclerViewH
     private RecyclerView.LayoutManager mLayoutManager;
     private RecycleCategoryAdapter mAdapter;
     private CategoryViewModel categoryViewModel;
-
-    private GetAllCategoriesPresenter getAllCategoriesPresenter;
-
+    private LinearLayout rvLinearLayout;
+    private LinearLayout noListLinearLayout;
 
     public CategoryListFragment() { }
 
@@ -50,20 +53,24 @@ public class CategoryListFragment extends Fragment implements ClickRecyclerViewH
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_category_list, container, false);
-        if (view instanceof RecyclerView) {
-            Context context = view.getContext();
-            mReciclerView = (RecyclerView) view;
-            mLayoutManager = new LinearLayoutManager(context);
-            mReciclerView.setLayoutManager(mLayoutManager);
-            mAdapter = new RecycleCategoryAdapter(this);
-            mReciclerView.setAdapter(mAdapter);
+        Context context = view.getContext();
+        mReciclerView = (RecyclerView) view.findViewById(R.id.rv_category_list);
+        mLayoutManager = new LinearLayoutManager(context);
+        mReciclerView.setLayoutManager(mLayoutManager);
+        mAdapter = new RecycleCategoryAdapter(this);
+        mReciclerView.setAdapter(mAdapter);
+        categoryViewModel = ViewModelProvider.AndroidViewModelFactory.getInstance(getActivity().getApplication())
+                .create(CategoryViewModel.class);
 
-            categoryViewModel = ViewModelProvider.AndroidViewModelFactory.getInstance(getActivity().getApplication())
-                    .create(CategoryViewModel.class);
+        rvLinearLayout = (LinearLayout)view.findViewById(R.id.ll_rcv_category_list);
+        noListLinearLayout = (LinearLayout)view.findViewById(R.id.ll_rcv_no_category_list);
 
-            getAllCategoriesPresenter = new GetAllCategoriesPresenter(getActivity().getApplicationContext(),
-                    categoryViewModel);
-        }
+        ((Button)view.findViewById(R.id.bt_ok_new_category_from_list)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(getActivity(), R.id.nav_host).navigate(NavGraphDirections.actionGlobalDestNewCategory());
+            }
+        });
 
         return view;
     }
@@ -72,18 +79,19 @@ public class CategoryListFragment extends Fragment implements ClickRecyclerViewH
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        AppExecutors.getInstance().diskIO().execute(new Runnable() {
-            @Override
-            public void run() {
-                getAllCategoriesPresenter.getAllCategories();;
-            }
-        });
-
         categoryViewModel.getCategories().observe(getViewLifecycleOwner(), new Observer<List<Category>>() {
             @Override
             public void onChanged(List<Category> list) {
-                mAdapter.setCategories(list);
-                mAdapter.notifyDataSetChanged();
+
+                if(list.isEmpty()){
+                    noListLinearLayout.setVisibility(View.VISIBLE);
+                    rvLinearLayout.setVisibility(View.INVISIBLE);
+                }else{
+                    noListLinearLayout.setVisibility(View.INVISIBLE);
+                    rvLinearLayout.setVisibility(View.VISIBLE);
+                    mAdapter.setCategories(list);
+                    mAdapter.notifyDataSetChanged();
+                }
             }
         });
     }

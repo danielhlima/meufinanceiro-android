@@ -29,7 +29,7 @@ public class GetAllCategoriesPresenter implements UseCaseOut.Callback<List<Categ
 
     @Override
     public void onSuccess(List<Category> parameter) {
-        categoryView.showCategories(parameter);
+        categoryView.receiveCategories(parameter);
     }
 
     @Override

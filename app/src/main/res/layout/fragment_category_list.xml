@@ -1,13 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.recyclerview.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:app="http://schemas.android.com/apk/res-auto"
-xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/rv_category_list"
-    android:name="br.com.danielhenriquelima.meufinanceiro.presenter.ui.CategoryListFragment"
-    android:layout_width="match_parent"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_height="match_parent"
-    android:layout_marginLeft="16dp"
-    android:layout_marginRight="16dp"
-    app:layoutManager="LinearLayoutManager"
-    tools:context=".presenter.ui.CategoryListFragment"
-    tools:listitem="@layout/category_layout" />
+    android:layout_width="match_parent">
+
+    <LinearLayout
+        android:id="@+id/ll_rcv_category_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="visible"
+        android:orientation="vertical">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_category_list"
+            android:name="br.com.danielhenriquelima.meufinanceiro.presenter.ui.CategoryListFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layoutManager="LinearLayoutManager"
+            tools:context=".presenter.ui.CategoryListFragment"
+            tools:listitem="@layout/category_layout" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_rcv_no_category_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="invisible">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="monospace"
+            android:gravity="center"
+            android:text="Nenhuma categoria criada."
+            android:textSize="24sp"/>
+
+        <Button
+            android:id="@+id/bt_ok_new_category_from_list"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="CRIAR CATEGORIA"/>
+
+    </LinearLayout>
+
+
+
+</FrameLayout>
