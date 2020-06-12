@@ -75,11 +75,11 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_add_new_category:
-                Navigation.findNavController(this, R.id.nav_host).navigate(HomeFragmentDirections.actionDestNewCategory());
+                Navigation.findNavController(this, R.id.nav_host).navigate(NavGraphDirections.actionGlobalDestNewCategory());
                 return true;
 
             case R.id.action_add_new_entry:
-                Navigation.findNavController(this, R.id.nav_host).navigate(HomeFragmentDirections.actionDestCategoryList());
+                Navigation.findNavController(this, R.id.nav_host).navigate(NavGraphDirections.actionGlobalDestCategoryList());
                 return true;
 
             default:
