@@ -1,5 +1,6 @@
 package br.com.danielhenriquelima.meufinanceiro.presenter.ui;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -32,7 +33,6 @@ public class CategoryListFragment extends Fragment implements ClickRecyclerViewH
     private RecyclerView mReciclerView;
     private RecyclerView.LayoutManager mLayoutManager;
     private RecycleCategoryAdapter mAdapter;
-    private List<Category> categories = new ArrayList<Category>();
     private CategoryViewModel categoryViewModel;
 
     private GetAllCategoriesPresenter getAllCategoriesPresenter;
@@ -49,27 +49,28 @@ public class CategoryListFragment extends Fragment implements ClickRecyclerViewH
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        return inflater.inflate(R.layout.fragment_category_list, container, false);
+        View view = inflater.inflate(R.layout.fragment_category_list, container, false);
+        if (view instanceof RecyclerView) {
+            Context context = view.getContext();
+            mReciclerView = (RecyclerView) view;
+            mLayoutManager = new LinearLayoutManager(context);
+            mReciclerView.setLayoutManager(mLayoutManager);
+            mAdapter = new RecycleCategoryAdapter(this);
+            mReciclerView.setAdapter(mAdapter);
+
+            categoryViewModel = ViewModelProvider.AndroidViewModelFactory.getInstance(getActivity().getApplication())
+                    .create(CategoryViewModel.class);
+
+            getAllCategoriesPresenter = new GetAllCategoriesPresenter(getActivity().getApplicationContext(),
+                    categoryViewModel);
+        }
+
+        return view;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        setupRecyclerView();
-    }
-
-    private void setupRecyclerView() {
-        mReciclerView = (RecyclerView) getView().findViewById(R.id.rv_category_list);
-        mLayoutManager = new LinearLayoutManager(getContext());
-        mReciclerView.setLayoutManager(mLayoutManager);
-        mAdapter = new RecycleCategoryAdapter(getContext(), categories, this);
-        mReciclerView.setAdapter(mAdapter);
-
-        categoryViewModel = ViewModelProvider.AndroidViewModelFactory.getInstance(getActivity().getApplication())
-                .create(CategoryViewModel.class);
-
-        getAllCategoriesPresenter = new GetAllCategoriesPresenter(getActivity().getApplicationContext(),
-                categoryViewModel);
 
         AppExecutors.getInstance().diskIO().execute(new Runnable() {
             @Override
@@ -81,7 +82,8 @@ public class CategoryListFragment extends Fragment implements ClickRecyclerViewH
         categoryViewModel.getCategories().observe(getViewLifecycleOwner(), new Observer<List<Category>>() {
             @Override
             public void onChanged(List<Category> list) {
-                categories = list;
+                mAdapter.setCategories(list);
+                mAdapter.notifyDataSetChanged();
             }
         });
     }

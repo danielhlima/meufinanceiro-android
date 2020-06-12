@@ -9,6 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import br.com.danielhenriquelima.domain.pojo.Category;
@@ -17,12 +18,9 @@ import br.com.danielhenriquelima.meufinanceiro.R;
 public class RecycleCategoryAdapter extends RecyclerView.Adapter<RecycleCategoryAdapter.RecycleCategoryViewHolder> {
 
     public ClickRecyclerViewHelper clickRecyclerViewHelper;
-    protected Context mContext;
-    private List<Category> categories;
+    private List<Category> categories = new ArrayList<Category>();
 
-    public RecycleCategoryAdapter(Context ctx, List<Category> list, ClickRecyclerViewHelper clickRecyclerViewHelper){
-        this.mContext = ctx;
-        this.categories = list;
+    public RecycleCategoryAdapter(ClickRecyclerViewHelper clickRecyclerViewHelper){
         this.clickRecyclerViewHelper = clickRecyclerViewHelper;
     }
 
@@ -42,6 +40,10 @@ public class RecycleCategoryAdapter extends RecyclerView.Adapter<RecycleCategory
     @Override
     public int getItemCount() {
         return categories.size();
+    }
+
+    public void setCategories(List<Category> categories) {
+        this.categories = categories;
     }
 
     protected class RecycleCategoryViewHolder extends RecyclerView.ViewHolder{
