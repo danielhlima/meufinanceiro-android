@@ -35,7 +35,7 @@
                 android:layout_margin="20dp"
                 android:ems="10"
                 android:hint="Nome"
-                android:inputType="textPersonName" />
+                android:inputType="textCapSentences" />
 
             <Button
                 android:id="@+id/bt_ok_new_category"
