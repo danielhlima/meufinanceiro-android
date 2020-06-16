@@ -2,11 +2,12 @@ package br.com.danielhenriquelima.domain.interactor;
 
 import android.util.Log;
 
+import br.com.danielhenriquelima.domain.boundary.BoundaryIn;
 import br.com.danielhenriquelima.domain.exception.AddNewEntryException;
-import br.com.danielhenriquelima.domain.pojo.Entry;
+import br.com.danielhenriquelima.domain.entity.Entry;
 import br.com.danielhenriquelima.repository.EntryRepository;
 
-public final class AddNewEntryUseCase implements UseCaseIn<Entry> {
+public final class AddNewEntryUseCase implements BoundaryIn<Entry> {
 
     private EntryRepository entryRepository;
 

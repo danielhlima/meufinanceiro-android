@@ -7,7 +7,7 @@ import java.util.List;
 import br.com.danielhenriquelima.data.database.AppDatabase;
 import br.com.danielhenriquelima.data.model.EntryModel;
 import br.com.danielhenriquelima.domain.exception.AddNewEntryException;
-import br.com.danielhenriquelima.domain.pojo.Entry;
+import br.com.danielhenriquelima.domain.entity.Entry;
 import br.com.danielhenriquelima.repository.EntryRepository;
 
 public class EntryRepositoryImpl implements EntryRepository {

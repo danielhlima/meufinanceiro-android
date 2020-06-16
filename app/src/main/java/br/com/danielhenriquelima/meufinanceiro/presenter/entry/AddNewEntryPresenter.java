@@ -1,14 +1,14 @@
-package br.com.danielhenriquelima.meufinanceiro.presenter.usecaseimpl.entry;
+package br.com.danielhenriquelima.meufinanceiro.presenter.entry;
 
 import android.content.Context;
 import android.util.Log;
 
 import br.com.danielhenriquelima.data.database.entry.EntryRepositoryImpl;
 import br.com.danielhenriquelima.domain.interactor.AddNewEntryUseCase;
-import br.com.danielhenriquelima.domain.interactor.UseCaseIn;
-import br.com.danielhenriquelima.domain.pojo.Entry;
+import br.com.danielhenriquelima.domain.boundary.BoundaryIn;
+import br.com.danielhenriquelima.domain.entity.Entry;
 
-public class AddNewEntryPresenter implements UseCaseIn.Callback {
+public class AddNewEntryPresenter implements BoundaryIn.Callback {
 
     private AddNewEntryUseCase addNewEntryUseCase;
     private EntryRepositoryImpl entryRepository;

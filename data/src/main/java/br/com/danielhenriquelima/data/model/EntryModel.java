@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey;
 
 import java.util.Date;
 
-import br.com.danielhenriquelima.domain.pojo.Entry;
+import br.com.danielhenriquelima.domain.entity.Entry;
 
 @Entity(tableName = "entry")
 public class EntryModel {

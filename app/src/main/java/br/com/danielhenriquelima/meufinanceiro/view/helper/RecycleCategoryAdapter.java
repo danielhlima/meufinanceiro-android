@@ -1,6 +1,5 @@
-package br.com.danielhenriquelima.meufinanceiro.presenter.ui.helper;
+package br.com.danielhenriquelima.meufinanceiro.view.helper;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.danielhenriquelima.domain.pojo.Category;
+import br.com.danielhenriquelima.domain.entity.Category;
 import br.com.danielhenriquelima.meufinanceiro.R;
 
 public class RecycleCategoryAdapter extends RecyclerView.Adapter<RecycleCategoryAdapter.RecycleCategoryViewHolder> {

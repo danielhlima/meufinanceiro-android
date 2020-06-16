@@ -7,19 +7,19 @@
 
     <fragment
         android:id="@+id/dest_home_fragment"
-        android:name="br.com.danielhenriquelima.meufinanceiro.presenter.ui.HomeFragment"
+        android:name="br.com.danielhenriquelima.meufinanceiro.view.fragment.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home"/>
 
     <fragment
         android:id="@+id/dest_new_category"
-        android:name="br.com.danielhenriquelima.meufinanceiro.presenter.ui.NewCategoryFragment"
+        android:name="br.com.danielhenriquelima.meufinanceiro.view.fragment.NewCategoryFragment"
         android:label="fragment_new_category"
         tools:layout="@layout/fragment_new_category"></fragment>
 
     <fragment
         android:id="@+id/dest_category_list"
-        android:name="br.com.danielhenriquelima.meufinanceiro.presenter.ui.CategoryListFragment"
+        android:name="br.com.danielhenriquelima.meufinanceiro.view.fragment.CategoryListFragment"
         android:label="fragment_category_list"
         tools:layout="@layout/fragment_category_list" />
 

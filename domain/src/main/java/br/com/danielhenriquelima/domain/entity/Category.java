@@ -1,4 +1,4 @@
-package br.com.danielhenriquelima.domain.pojo;
+package br.com.danielhenriquelima.domain.entity;
 
 public class Category {
 

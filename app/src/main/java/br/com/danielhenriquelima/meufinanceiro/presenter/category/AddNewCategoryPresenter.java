@@ -1,23 +1,22 @@
-package br.com.danielhenriquelima.meufinanceiro.presenter.usecaseimpl.category;
+package br.com.danielhenriquelima.meufinanceiro.presenter.category;
 
 import android.content.Context;
 import android.os.Handler;
-import android.util.Log;
 
 import br.com.danielhenriquelima.data.database.category.CategoryRepositoryImpl;
 import br.com.danielhenriquelima.domain.interactor.AddNewCategoryUseCase;
-import br.com.danielhenriquelima.domain.interactor.UseCaseIn;
-import br.com.danielhenriquelima.domain.pojo.Category;
-import br.com.danielhenriquelima.meufinanceiro.presenter.view.CreateCategoryView;
+import br.com.danielhenriquelima.domain.boundary.BoundaryIn;
+import br.com.danielhenriquelima.domain.entity.Category;
+import br.com.danielhenriquelima.meufinanceiro.view.CategoryView;
 
-public class AddNewCategoryPresenter implements UseCaseIn.Callback {
+public class AddNewCategoryPresenter implements BoundaryIn.Callback {
 
     private AddNewCategoryUseCase addNewCategoryUseCase;
     private CategoryRepositoryImpl categoryRepository;
-    private CreateCategoryView createCategoryView;
+    private CategoryView createCategoryView;
     private Context context;
 
-    public AddNewCategoryPresenter(Context context, CreateCategoryView createCategoryView) {
+    public AddNewCategoryPresenter(Context context, CategoryView createCategoryView) {
         categoryRepository = new CategoryRepositoryImpl(context);
         addNewCategoryUseCase = new AddNewCategoryUseCase(categoryRepository);
         this.createCategoryView = createCategoryView;

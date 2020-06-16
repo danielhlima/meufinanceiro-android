@@ -6,7 +6,7 @@ import androidx.room.Ignore;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
-import br.com.danielhenriquelima.domain.pojo.Category;
+import br.com.danielhenriquelima.domain.entity.Category;
 
 @Entity(tableName = "category", indices = {@Index(value = {"name"}, unique = true)})
 public class CategoryModel {

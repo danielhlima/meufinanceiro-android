@@ -1,12 +1,11 @@
 package br.com.danielhenriquelima.domain.interactor;
 
-import android.util.Log;
-
+import br.com.danielhenriquelima.domain.boundary.BoundaryIn;
 import br.com.danielhenriquelima.domain.exception.AddNewCategoryException;
-import br.com.danielhenriquelima.domain.pojo.Category;
+import br.com.danielhenriquelima.domain.entity.Category;
 import br.com.danielhenriquelima.repository.CategoryRepository;
 
-public class AddNewCategoryUseCase implements UseCaseIn<Category> {
+public class AddNewCategoryUseCase implements BoundaryIn<Category> {
 
     private CategoryRepository categoryRepository;
 

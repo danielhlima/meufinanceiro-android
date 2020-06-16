@@ -1,6 +1,6 @@
-package br.com.danielhenriquelima.domain.interactor;
+package br.com.danielhenriquelima.domain.boundary;
 
-public interface UseCaseOut<O> {
+public interface BoundaryOut<O> {
 
     interface Callback<O>{
         void onSuccess(O parameter);

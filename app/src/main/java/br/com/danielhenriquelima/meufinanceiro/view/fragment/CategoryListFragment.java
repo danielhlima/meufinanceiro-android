@@ -1,4 +1,4 @@
-package br.com.danielhenriquelima.meufinanceiro.presenter.ui;
+package br.com.danielhenriquelima.meufinanceiro.view.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -19,17 +19,14 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import br.com.danielhenriquelima.domain.pojo.Category;
+import br.com.danielhenriquelima.domain.entity.Category;
 import br.com.danielhenriquelima.meufinanceiro.NavGraphDirections;
 import br.com.danielhenriquelima.meufinanceiro.R;
-import br.com.danielhenriquelima.meufinanceiro.executor.AppExecutors;
-import br.com.danielhenriquelima.meufinanceiro.presenter.ui.helper.ClickRecyclerViewHelper;
-import br.com.danielhenriquelima.meufinanceiro.presenter.ui.helper.RecycleCategoryAdapter;
-import br.com.danielhenriquelima.meufinanceiro.presenter.usecaseimpl.category.GetAllCategoriesPresenter;
-import br.com.danielhenriquelima.meufinanceiro.presenter.viewmodel.CategoryViewModel;
+import br.com.danielhenriquelima.meufinanceiro.view.helper.ClickRecyclerViewHelper;
+import br.com.danielhenriquelima.meufinanceiro.view.helper.RecycleCategoryAdapter;
+import br.com.danielhenriquelima.meufinanceiro.viewmodel.CategoryViewModel;
 
 
 public class CategoryListFragment extends Fragment implements ClickRecyclerViewHelper {

@@ -3,7 +3,7 @@ package br.com.danielhenriquelima.repository;
 import java.util.List;
 
 import br.com.danielhenriquelima.domain.exception.AddNewCategoryException;
-import br.com.danielhenriquelima.domain.pojo.Category;
+import br.com.danielhenriquelima.domain.entity.Category;
 
 public interface CategoryRepository {
 

@@ -1,4 +1,4 @@
-package br.com.danielhenriquelima.meufinanceiro.executor;
+package br.com.danielhenriquelima.device.executor;
 
 import android.os.Handler;
 import android.os.Looper;

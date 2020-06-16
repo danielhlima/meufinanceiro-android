@@ -18,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layoutManager="LinearLayoutManager"
-            tools:context=".presenter.ui.CategoryListFragment"
+            tools:context=".view.fragment.CategoryListFragment"
             tools:listitem="@layout/category_layout" />
     </LinearLayout>
 

@@ -8,7 +8,7 @@ import java.util.List;
 import br.com.danielhenriquelima.data.database.AppDatabase;
 import br.com.danielhenriquelima.data.model.CategoryModel;
 import br.com.danielhenriquelima.domain.exception.AddNewCategoryException;
-import br.com.danielhenriquelima.domain.pojo.Category;
+import br.com.danielhenriquelima.domain.entity.Category;
 import br.com.danielhenriquelima.repository.CategoryRepository;
 
 public class CategoryRepositoryImpl implements CategoryRepository {
