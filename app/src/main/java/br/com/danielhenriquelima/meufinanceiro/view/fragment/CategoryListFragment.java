@@ -95,6 +95,6 @@ public class CategoryListFragment extends Fragment implements ClickRecyclerViewH
 
     @Override
     public void onCustomClick(Object object) {
-        Log.d("DABUEK", ((Category)object).getName());
+        Navigation.findNavController(getActivity(), R.id.nav_host).navigate(NavGraphDirections.actionGlobalDestNewEntry());
     }
 }

@@ -23,11 +23,15 @@
         android:label="fragment_category_list"
         tools:layout="@layout/fragment_category_list" />
 
-    <action
-        android:id="@+id/global_action_dest_home"
-        app:destination="@id/dest_home_fragment"
-       />
+    <action android:id="@+id/global_action_dest_home" app:destination="@id/dest_home_fragment" />
     <action android:id="@+id/action_global_dest_category_list" app:destination="@id/dest_category_list" />
     <action android:id="@+id/action_global_dest_new_category" app:destination="@id/dest_new_category" />
+    <action android:id="@+id/action_global_dest_new_entry" app:destination="@id/newEntryFragment" />
+
+    <fragment
+        android:id="@+id/newEntryFragment"
+        android:name="br.com.danielhenriquelima.meufinanceiro.view.fragment.NewEntryFragment"
+        android:label="fragment_new_entry"
+        tools:layout="@layout/fragment_new_entry" />
 
 </navigation>
