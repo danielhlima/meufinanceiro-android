@@ -15,7 +15,6 @@ public class AddNewCategoryUseCase implements BoundaryIn<Category> {
 
     @Override
     public void execute(Category category, Callback callback) {
-
         try {
             categoryRepository.createCategory(category);
             callback.onSuccess();

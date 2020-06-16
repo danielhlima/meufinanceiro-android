@@ -17,16 +17,11 @@ public final class AddNewEntryUseCase implements BoundaryIn<Entry> {
 
     @Override
     public void execute(Entry entry, Callback callback){
-
         try{
             entryRepository.createNewEntry(entry);
-        }catch (AddNewEntryException e){
-            Log.d("DABUEK", e.getLocalizedMessage());
-        }
-
-        if(entry != null)
             callback.onSuccess();
-        else
-            callback.onError(new AddNewEntryException("Error while inserting new Entry on database"));
+        }catch (AddNewEntryException e){
+            callback.onError(new AddNewEntryException(e.getMessage()));
+        }
     }
 }
