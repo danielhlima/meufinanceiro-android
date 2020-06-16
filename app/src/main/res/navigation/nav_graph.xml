@@ -32,6 +32,12 @@
         android:id="@+id/newEntryFragment"
         android:name="br.com.danielhenriquelima.meufinanceiro.view.fragment.NewEntryFragment"
         android:label="fragment_new_entry"
-        tools:layout="@layout/fragment_new_entry" />
+        tools:layout="@layout/fragment_new_entry">
+        <argument
+            android:name="category"
+            app:argType="br.com.danielhenriquelima.domain.entity.Category"
+            app:nullable="true"
+            android:defaultValue="@null" />
+    </fragment>
 
 </navigation>

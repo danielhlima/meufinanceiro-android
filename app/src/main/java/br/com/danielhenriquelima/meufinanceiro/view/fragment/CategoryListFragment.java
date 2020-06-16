@@ -8,6 +8,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -95,6 +96,8 @@ public class CategoryListFragment extends Fragment implements ClickRecyclerViewH
 
     @Override
     public void onCustomClick(Object object) {
-        Navigation.findNavController(getActivity(), R.id.nav_host).navigate(NavGraphDirections.actionGlobalDestNewEntry());
+        Category c = (Category)object;
+        NavGraphDirections.ActionGlobalDestNewEntry actionGlobalDestNewEntry = NewCategoryFragmentDirections.actionGlobalDestNewEntry().setCategory(c);
+        Navigation.findNavController(getActivity(), R.id.nav_host).navigate(actionGlobalDestNewEntry);
     }
 }

@@ -1,8 +1,9 @@
 package br.com.danielhenriquelima.domain.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Entry {
+public class Entry implements Serializable {
 
     private int id;
     private String name;
