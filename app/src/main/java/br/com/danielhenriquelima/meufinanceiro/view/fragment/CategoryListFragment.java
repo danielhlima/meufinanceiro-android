@@ -8,12 +8,10 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,8 +23,8 @@ import java.util.List;
 import br.com.danielhenriquelima.domain.entity.Category;
 import br.com.danielhenriquelima.meufinanceiro.NavGraphDirections;
 import br.com.danielhenriquelima.meufinanceiro.R;
-import br.com.danielhenriquelima.meufinanceiro.view.helper.ClickRecyclerViewHelper;
-import br.com.danielhenriquelima.meufinanceiro.view.helper.RecycleCategoryAdapter;
+import br.com.danielhenriquelima.meufinanceiro.view.framework.ClickRecyclerViewHelper;
+import br.com.danielhenriquelima.meufinanceiro.view.framework.RecycleCategoryAdapter;
 import br.com.danielhenriquelima.meufinanceiro.viewmodel.CategoryViewModel;
 
 

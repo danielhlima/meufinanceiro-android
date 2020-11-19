@@ -10,12 +10,12 @@ import br.com.danielhenriquelima.meufinanceiro.presenter.entry.AddNewEntryPresen
 import br.com.danielhenriquelima.meufinanceiro.view.EntryView;
 import br.com.danielhenriquelima.meufinanceiro.view.fragment.BaseFragment;
 
-public class EntryViewModel extends AndroidViewModel implements EntryView {
+public class NewEntryViewModel extends AndroidViewModel implements EntryView {
 
     private BaseFragment baseFragment;
     private AddNewEntryPresenter addNewEntryPresenter;
 
-    public EntryViewModel(@NonNull Application application) {
+    public NewEntryViewModel(@NonNull Application application) {
         super(application);
         addNewEntryPresenter = new AddNewEntryPresenter(application.getBaseContext(), this);
     }

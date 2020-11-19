@@ -22,12 +22,6 @@ import br.com.danielhenriquelima.meufinanceiro.presenter.category.GetAllCategori
 
 public class MainActivity extends AppCompatActivity {
 
-
-    private AddNewEntryPresenter addNewEntryPresenter;
-    private AddNewCategoryPresenter addNewCategoryUsePresenter;
-    private GetAllCategoriesPresenter getAllCategoriesPresenter;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

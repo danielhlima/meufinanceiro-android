@@ -21,6 +21,7 @@ public class EntryRepositoryImpl implements EntryRepository {
 
     @Override
     public void createNewEntry(final Entry tEntry) throws AddNewEntryException {
+        mDb.entryDao().insertEntry(new EntryModel(tEntry));
     }
 
     @Override
